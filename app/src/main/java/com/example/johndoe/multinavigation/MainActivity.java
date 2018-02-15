@@ -19,23 +19,14 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(R.id.drawer);
         mToolbar = findViewById(R.id.toolbar);
 
+        setSupportActionBar(mToolbar);
 
         mDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout,
+                mToolbar,
                 R.string.open_drawer,
-                R.string.close_drawer) {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                setTitle(R.string.open_drawer);
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                setTitle(R.string.close_drawer);
-            }
-        };
+                R.string.close_drawer);
+        mDrawerToggle.syncState();
 
         mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
